@@ -22,6 +22,7 @@ using System.Collections;
 using System.Linq;
 using QuantConnect.Data.Auxiliary;
 using QuantConnect.Interfaces;
+using QuantConnect.Logging;
 
 namespace QuantConnect.Lean.Engine.DataFeeds.Enumerators
 {
@@ -102,6 +103,8 @@ namespace QuantConnect.Lean.Engine.DataFeeds.Enumerators
                     Time = localTime,
                     EndTime = localTime
                 };
+
+                Log.Trace($"Adding 'FuturesChainUniverseDataCollection' Time {localTime}. Symbol count {zipEntries.Count}. TZ {_subscriptionRequest.Security.Exchange.TimeZone}");
 
                 _lastEmitTime = localTime;
 
